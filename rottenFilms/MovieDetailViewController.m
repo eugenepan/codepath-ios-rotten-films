@@ -14,7 +14,7 @@
 @interface MovieDetailViewController ()
 
 @property (weak, nonatomic) IBOutlet UITextView *movieSynopsisTextView;
-@property (weak, nonatomic) IBOutlet UIImageView *movieDetailImageView;
+@property (strong, nonatomic) IBOutlet UIImageView *movieDetailImageView;
 
 @end
 

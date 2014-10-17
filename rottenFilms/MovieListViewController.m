@@ -16,6 +16,8 @@
 
 @property (weak, nonatomic) IBOutlet UITableView *moviesTableView;
 @property (strong, nonatomic) NSArray *movies;
+@property (strong, nonatomic) UIRefreshControl *refreshControl;
+
 @end
 
 @implementation MovieListViewController
@@ -23,26 +25,23 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.refreshControl = [[UIRefreshControl alloc] init];
+    self.refreshControl.attributedTitle = [[NSAttributedString alloc] initWithString:@"Pull to Refresh"];
+    [self.refreshControl addTarget:self
+                action:@selector(loadMovies)
+    forControlEvents:UIControlEventValueChanged];
+    [self.moviesTableView addSubview:self.refreshControl];
+
     self.moviesTableView.delegate = self;
     self.moviesTableView.dataSource = self;
     self.moviesTableView.rowHeight = 120;
     
     self.title = @"Rotten Movies";
     
-    [self.moviesTableView registerNib:[UINib nibWithNibName:@"MovieTableViewCell" bundle:nil] forCellReuseIdentifier:@"MovieTableViewCell"];
+    [self.moviesTableView registerNib:[UINib nibWithNibName:@"MovieTableViewCell" bundle:nil]
+               forCellReuseIdentifier:@"MovieTableViewCell"];
     
-    NSURL *url = [NSURL URLWithString:@"http://api.rottentomatoes.com/api/public/v1.0/lists/movies/box_office.json?apikey=3cw4jtr9vvp4ecsjh57fqhfr"];
-    NSURLRequest *request = [[NSURLRequest alloc] initWithURL:url];
-    
-    [SVProgressHUD show];
-    
-    [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
-        NSDictionary *responseDictionary = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
-
-        self.movies = responseDictionary[@"movies"];
-        [SVProgressHUD dismiss];
-        [self.moviesTableView reloadData];
-    }];
+    [self loadMovies];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -81,6 +80,27 @@
     MovieDetailViewController *vc = [[MovieDetailViewController alloc] init];
     vc.movie = self.movies[indexPath.row];
     [self.navigationController pushViewController:vc animated:YES];
+}
+
+- (void) loadMovies {
+    [SVProgressHUD show];
+    
+    NSURL *url = [NSURL URLWithString:@"http://api.rottentomatoes.com/api/public/v1.0/lists/movies/box_office.json?apikey=3cw4jtr9vvp4ecsjh57fqhfr"];
+    NSURLRequest *request = [[NSURLRequest alloc] initWithURL:url];
+    [NSURLConnection sendAsynchronousRequest:request
+                                       queue:[NSOperationQueue mainQueue]
+                           completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
+                               if (connectionError) {
+                                   // show error box
+                               } else {
+                                   NSDictionary *responseDictionary = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+                                   self.movies = responseDictionary[@"movies"];
+                                   [self.moviesTableView reloadData];
+                               }
+                               [SVProgressHUD dismiss];
+                           }];
+    
+    [self.refreshControl endRefreshing];
 }
 
 @end
