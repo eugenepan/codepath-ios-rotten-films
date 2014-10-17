@@ -14,9 +14,11 @@
 
 @interface MovieListViewController ()
 
-@property (weak, nonatomic) IBOutlet UITableView *moviesTableView;
+
 @property (strong, nonatomic) NSArray *movies;
+@property (weak, nonatomic) IBOutlet UITableView *moviesTableView;
 @property (strong, nonatomic) UIRefreshControl *refreshControl;
+@property (weak, nonatomic) IBOutlet UITextView *networkErrorTextView;
 
 @end
 
@@ -25,21 +27,22 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.refreshControl = [[UIRefreshControl alloc] init];
-    self.refreshControl.attributedTitle = [[NSAttributedString alloc] initWithString:@"Pull to Refresh"];
-    [self.refreshControl addTarget:self
-                action:@selector(loadMovies)
-    forControlEvents:UIControlEventValueChanged];
-    [self.moviesTableView addSubview:self.refreshControl];
+    self.title = @"Rotten Movies";
 
     self.moviesTableView.delegate = self;
     self.moviesTableView.dataSource = self;
     self.moviesTableView.rowHeight = 120;
-    
-    self.title = @"Rotten Movies";
-    
     [self.moviesTableView registerNib:[UINib nibWithNibName:@"MovieTableViewCell" bundle:nil]
                forCellReuseIdentifier:@"MovieTableViewCell"];
+    
+    self.refreshControl = [[UIRefreshControl alloc] init];
+    self.refreshControl.attributedTitle = [[NSAttributedString alloc] initWithString:@"Pull to Refresh"];
+    [self.refreshControl addTarget:self
+                            action:@selector(loadMovies)
+                  forControlEvents:UIControlEventValueChanged];
+    [self.moviesTableView addSubview:self.refreshControl];
+    
+    self.networkErrorTextView.layer.cornerRadius = 4.0f;
     
     [self loadMovies];
 }
@@ -83,6 +86,7 @@
 }
 
 - (void) loadMovies {
+    self.networkErrorTextView.hidden = YES;
     [SVProgressHUD show];
     
     NSURL *url = [NSURL URLWithString:@"http://api.rottentomatoes.com/api/public/v1.0/lists/movies/box_office.json?apikey=3cw4jtr9vvp4ecsjh57fqhfr"];
@@ -91,7 +95,7 @@
                                        queue:[NSOperationQueue mainQueue]
                            completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
                                if (connectionError) {
-                                   // show error box
+                                   self.networkErrorTextView.hidden = NO;
                                } else {
                                    NSDictionary *responseDictionary = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
                                    self.movies = responseDictionary[@"movies"];
