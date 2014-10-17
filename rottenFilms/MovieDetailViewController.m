@@ -15,6 +15,10 @@
 
 @property (weak, nonatomic) IBOutlet UITextView *movieSynopsisTextView;
 @property (strong, nonatomic) IBOutlet UIImageView *movieDetailImageView;
+@property (weak, nonatomic) IBOutlet UITextView *criticsRatingTextView;
+@property (weak, nonatomic) IBOutlet UITextView *criticsScoreTextView;
+@property (weak, nonatomic) IBOutlet UITextView *audienceRatingTextView;
+@property (weak, nonatomic) IBOutlet UITextView *audienceScoreTextView;
 
 @end
 
@@ -24,7 +28,7 @@
     [super viewDidLoad];
     
     self.title = self.movie[@"title"];
-    self.movieSynopsisTextView.text = self.movie[@"synopsis"];
+    
     self.movieDetailImageView.layer.shadowColor = [UIColor blackColor].CGColor;
     self.movieDetailImageView.layer.shadowOffset = CGSizeMake(1, 1);
     self.movieDetailImageView.layer.shadowOpacity = 0.8;
@@ -35,6 +39,11 @@
     UIImage *movieThumbnail = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:[self.movie valueForKeyPath:@"posters.thumbnail"]]]];
     [self.movieDetailImageView setImageWithURL:[NSURL URLWithString: oriImageString] placeholderImage:movieThumbnail];
     
+    self.criticsRatingTextView.text = [self.movie valueForKeyPath:@"ratings.critics_rating"];
+    self.criticsScoreTextView.text = [NSString stringWithFormat:@"%@", [self.movie valueForKeyPath:@"ratings.critics_score"]];
+    self.audienceRatingTextView.text= [self.movie valueForKeyPath:@"ratings.audience_rating"];
+    self.audienceScoreTextView.text= [NSString stringWithFormat:@"%@", [self.movie valueForKeyPath:@"ratings.audience_score"]];
+    self.movieSynopsisTextView.text = self.movie[@"synopsis"];
 }
 
 - (void)didReceiveMemoryWarning {

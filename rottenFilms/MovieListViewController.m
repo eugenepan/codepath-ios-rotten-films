@@ -41,6 +41,7 @@
                             action:@selector(loadMovies)
                   forControlEvents:UIControlEventValueChanged];
     [self.moviesTableView addSubview:self.refreshControl];
+    [self.refreshControl.superview sendSubviewToBack:self.refreshControl];
     
     self.networkErrorTextView.layer.cornerRadius = 4.0f;
     
@@ -87,7 +88,9 @@
 
 - (void) loadMovies {
     self.networkErrorTextView.hidden = YES;
-    [SVProgressHUD show];
+    if (self.movies.count == 0) {
+        [SVProgressHUD show];
+    }
     
     NSURL *url = [NSURL URLWithString:@"http://api.rottentomatoes.com/api/public/v1.0/lists/movies/box_office.json?apikey=3cw4jtr9vvp4ecsjh57fqhfr"];
     NSURLRequest *request = [[NSURLRequest alloc] initWithURL:url];
