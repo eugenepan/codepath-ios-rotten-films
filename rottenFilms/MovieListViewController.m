@@ -88,6 +88,7 @@
 
 - (void) loadMovies {
     self.networkErrorTextView.hidden = YES;
+    
     if (self.movies.count == 0) {
         [SVProgressHUD show];
     }
