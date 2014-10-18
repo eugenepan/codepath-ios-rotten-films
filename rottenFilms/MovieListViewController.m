@@ -14,11 +14,12 @@
 
 @interface MovieListViewController ()
 
-
 @property (strong, nonatomic) NSArray *movies;
 @property (weak, nonatomic) IBOutlet UITableView *moviesTableView;
 @property (strong, nonatomic) UIRefreshControl *refreshControl;
 @property (weak, nonatomic) IBOutlet UITextView *networkErrorTextView;
+@property (weak, nonatomic) IBOutlet UITabBar *moviesTabBar;
+@property (nonatomic, assign) NSString *currAPIEndpoint;
 
 @end
 
@@ -31,6 +32,9 @@
 
     self.moviesTableView.delegate = self;
     self.moviesTableView.dataSource = self;
+    
+    self.moviesTabBar.delegate = self;
+    
     self.moviesTableView.rowHeight = 120;
     [self.moviesTableView registerNib:[UINib nibWithNibName:@"MovieTableViewCell" bundle:nil]
                forCellReuseIdentifier:@"MovieTableViewCell"];
@@ -44,6 +48,8 @@
     [self.refreshControl.superview sendSubviewToBack:self.refreshControl];
     
     self.networkErrorTextView.layer.cornerRadius = 4.0f;
+    
+    self.currAPIEndpoint = @"box_office";
     
     [self loadMovies];
 }
@@ -86,14 +92,35 @@
     [self.navigationController pushViewController:vc animated:YES];
 }
 
+- (void)tabBar:(UITabBar *)tabBar didSelectItem:(UITabBarItem *)item {
+    NSLog(@"didSelectItem: %ld", (long)item.tag);
+    
+    switch (item.tag) {
+        case 0:
+            self.currAPIEndpoint = @"box_office";
+            break;
+        case 1:
+            self.currAPIEndpoint = @"in_theaters";
+            break;
+        case 2:
+            self.currAPIEndpoint = @"opening";
+            break;
+        case 3:
+            self.currAPIEndpoint = @"upcoming";
+            break;
+    }
+    
+    [self loadMovies];
+}
+
 - (void) loadMovies {
     self.networkErrorTextView.hidden = YES;
     
-    if (self.movies.count == 0) {
-        [SVProgressHUD show];
-    }
+    [SVProgressHUD show];
     
-    NSURL *url = [NSURL URLWithString:@"http://api.rottentomatoes.com/api/public/v1.0/lists/movies/box_office.json?apikey=3cw4jtr9vvp4ecsjh57fqhfr"];
+    NSString *apiCall = [NSString stringWithFormat:@"http://api.rottentomatoes.com/api/public/v1.0/lists/movies/%@.json?apikey=3cw4jtr9vvp4ecsjh57fqhfr", self.currAPIEndpoint];
+    
+    NSURL *url = [NSURL URLWithString:apiCall];
     NSURLRequest *request = [[NSURLRequest alloc] initWithURL:url];
     [NSURLConnection sendAsynchronousRequest:request
                                        queue:[NSOperationQueue mainQueue]
