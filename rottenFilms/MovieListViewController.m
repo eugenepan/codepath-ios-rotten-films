@@ -19,7 +19,9 @@
 @property (strong, nonatomic) UIRefreshControl *refreshControl;
 @property (weak, nonatomic) IBOutlet UITextView *networkErrorTextView;
 @property (weak, nonatomic) IBOutlet UITabBar *moviesTabBar;
+@property (nonatomic, assign) NSString *lastAPIEndpoint;
 @property (nonatomic, assign) NSString *currAPIEndpoint;
+@property (weak, nonatomic) IBOutlet UITabBarItem *boxOfficeTabBarItem;
 
 @end
 
@@ -47,9 +49,12 @@
     [self.moviesTableView addSubview:self.refreshControl];
     [self.refreshControl.superview sendSubviewToBack:self.refreshControl];
     
+    [self.moviesTabBar setSelectedItem:self.boxOfficeTabBarItem];
+     
     self.networkErrorTextView.layer.cornerRadius = 4.0f;
     
     self.currAPIEndpoint = @"box_office";
+    self.lastAPIEndpoint = @"box_office";
     
     [self loadMovies];
 }
@@ -93,8 +98,6 @@
 }
 
 - (void)tabBar:(UITabBar *)tabBar didSelectItem:(UITabBarItem *)item {
-    NSLog(@"didSelectItem: %ld", (long)item.tag);
-    
     switch (item.tag) {
         case 0:
             self.currAPIEndpoint = @"box_office";
@@ -116,7 +119,11 @@
 - (void) loadMovies {
     self.networkErrorTextView.hidden = YES;
     
-    [SVProgressHUD show];
+    if (self.lastAPIEndpoint != self.currAPIEndpoint) {
+      [SVProgressHUD show];
+    }
+    
+    self.lastAPIEndpoint = self.currAPIEndpoint;
     
     NSString *apiCall = [NSString stringWithFormat:@"http://api.rottentomatoes.com/api/public/v1.0/lists/movies/%@.json?apikey=3cw4jtr9vvp4ecsjh57fqhfr", self.currAPIEndpoint];
     

@@ -18,6 +18,10 @@
 		872ED78A19ECD71E00D57EFD /* MovieListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 872ED78819ECD71E00D57EFD /* MovieListViewController.xib */; };
 		872ED78E19ECDCDA00D57EFD /* MovieTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 872ED78C19ECDCDA00D57EFD /* MovieTableViewCell.m */; };
 		872ED78F19ECDCDA00D57EFD /* MovieTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 872ED78D19ECDCDA00D57EFD /* MovieTableViewCell.xib */; };
+		87C207C119F32BFB001B0B46 /* opening-icon-64@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 87C207C019F32BFB001B0B46 /* opening-icon-64@2x.png */; };
+		87C207C319F32C4F001B0B46 /* upcoming-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 87C207C219F32C4F001B0B46 /* upcoming-icon@2x.png */; };
+		87C207C719F32CB3001B0B46 /* theaters-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 87C207C519F32CB3001B0B46 /* theaters-icon@2x.png */; };
+		87C207C919F32CF5001B0B46 /* boxoffice-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 87C207C819F32CF5001B0B46 /* boxoffice-icon@2x.png */; };
 		87D81A4A19ECECF8002F2E6E /* MovieDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 87D81A4819ECECF8002F2E6E /* MovieDetailViewController.m */; };
 		87D81A4B19ECECF8002F2E6E /* MovieDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 87D81A4919ECECF8002F2E6E /* MovieDetailViewController.xib */; };
 		DE71EF338AF083F80B5B63D8 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 27B06FBEE6F5849DCDB67802 /* libPods.a */; };
@@ -56,6 +60,10 @@
 		872ED78B19ECDCDA00D57EFD /* MovieTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MovieTableViewCell.h; sourceTree = "<group>"; };
 		872ED78C19ECDCDA00D57EFD /* MovieTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MovieTableViewCell.m; sourceTree = "<group>"; };
 		872ED78D19ECDCDA00D57EFD /* MovieTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MovieTableViewCell.xib; sourceTree = "<group>"; };
+		87C207C019F32BFB001B0B46 /* opening-icon-64@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "opening-icon-64@2x.png"; sourceTree = "<group>"; };
+		87C207C219F32C4F001B0B46 /* upcoming-icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "upcoming-icon@2x.png"; sourceTree = "<group>"; };
+		87C207C519F32CB3001B0B46 /* theaters-icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "theaters-icon@2x.png"; sourceTree = "<group>"; };
+		87C207C819F32CF5001B0B46 /* boxoffice-icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "boxoffice-icon@2x.png"; sourceTree = "<group>"; };
 		87D81A4719ECECF8002F2E6E /* MovieDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MovieDetailViewController.h; sourceTree = "<group>"; };
 		87D81A4819ECECF8002F2E6E /* MovieDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MovieDetailViewController.m; sourceTree = "<group>"; };
 		87D81A4919ECECF8002F2E6E /* MovieDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MovieDetailViewController.xib; sourceTree = "<group>"; };
@@ -112,6 +120,7 @@
 		872ED75F19ECD64200D57EFD /* rottenFilms */ = {
 			isa = PBXGroup;
 			children = (
+				87C207AD19F2F058001B0B46 /* Assets */,
 				872ED76419ECD64200D57EFD /* AppDelegate.h */,
 				872ED76519ECD64200D57EFD /* AppDelegate.m */,
 				872ED76719ECD64200D57EFD /* ViewController.h */,
@@ -157,6 +166,17 @@
 				872ED77B19ECD64200D57EFD /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		87C207AD19F2F058001B0B46 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				87C207C819F32CF5001B0B46 /* boxoffice-icon@2x.png */,
+				87C207C519F32CB3001B0B46 /* theaters-icon@2x.png */,
+				87C207C219F32C4F001B0B46 /* upcoming-icon@2x.png */,
+				87C207C019F32BFB001B0B46 /* opening-icon-64@2x.png */,
+			);
+			name = Assets;
 			sourceTree = "<group>";
 		};
 		B4CDB5EAE258D98F18417D21 /* Frameworks */ = {
@@ -250,10 +270,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				87C207C319F32C4F001B0B46 /* upcoming-icon@2x.png in Resources */,
 				87D81A4B19ECECF8002F2E6E /* MovieDetailViewController.xib in Resources */,
 				872ED76C19ECD64200D57EFD /* Main.storyboard in Resources */,
 				872ED78F19ECDCDA00D57EFD /* MovieTableViewCell.xib in Resources */,
+				87C207C919F32CF5001B0B46 /* boxoffice-icon@2x.png in Resources */,
 				872ED77119ECD64200D57EFD /* LaunchScreen.xib in Resources */,
+				87C207C719F32CB3001B0B46 /* theaters-icon@2x.png in Resources */,
+				87C207C119F32BFB001B0B46 /* opening-icon-64@2x.png in Resources */,
 				872ED76E19ECD64200D57EFD /* Images.xcassets in Resources */,
 				872ED78A19ECD71E00D57EFD /* MovieListViewController.xib in Resources */,
 			);

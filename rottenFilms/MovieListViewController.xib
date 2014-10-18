@@ -6,9 +6,11 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MovieListViewController">
             <connections>
+                <outlet property="boxOfficeTabBarItem" destination="EAw-n7-I82" id="XZi-c3-mpR"/>
                 <outlet property="moviesTabBar" destination="j9r-Bv-KAY" id="VTt-1i-TZQ"/>
                 <outlet property="moviesTableView" destination="CKS-Ec-sYk" id="WYF-tV-LBA"/>
                 <outlet property="networkErrorTextView" destination="Fk0-2z-mZp" id="DTd-Fn-2bQ"/>
+                <outlet property="searchDisplayController" destination="mO2-Dc-iot" id="1fO-0q-uhC"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -35,10 +37,10 @@
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <items>
-                        <tabBarItem title="Box Office" id="EAw-n7-I82"/>
-                        <tabBarItem tag="1" title="In Theaters" id="xDr-C3-qNA"/>
-                        <tabBarItem tag="2" title="Opening" id="rKV-kj-k1U"/>
-                        <tabBarItem tag="3" title="Upcoming" id="xOG-mN-0JG"/>
+                        <tabBarItem title="Box Office" image="boxoffice-icon.png" id="EAw-n7-I82"/>
+                        <tabBarItem tag="1" title="In Theaters" image="theaters-icon.png" id="xDr-C3-qNA"/>
+                        <tabBarItem tag="2" title="Opening" image="opening-icon-64.png" id="rKV-kj-k1U"/>
+                        <tabBarItem tag="3" title="Upcoming" image="upcoming-icon.png" id="xOG-mN-0JG"/>
                     </items>
                 </tabBar>
             </subviews>
@@ -73,7 +75,21 @@
             </viewControllers>
             <point key="canvasLocation" x="642" y="557"/>
         </tabBarController>
+        <searchDisplayController id="mO2-Dc-iot">
+            <connections>
+                <outlet property="delegate" destination="-1" id="qHh-Ox-qDR"/>
+                <outlet property="searchContentsController" destination="-1" id="uaW-pd-1LA"/>
+                <outlet property="searchResultsDataSource" destination="-1" id="FwX-gr-t8w"/>
+                <outlet property="searchResultsDelegate" destination="-1" id="Elf-ob-owy"/>
+            </connections>
+        </searchDisplayController>
     </objects>
+    <resources>
+        <image name="boxoffice-icon.png" width="32" height="32"/>
+        <image name="opening-icon-64.png" width="32" height="32"/>
+        <image name="theaters-icon.png" width="32" height="32"/>
+        <image name="upcoming-icon.png" width="32" height="32"/>
+    </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
