@@ -72,7 +72,7 @@
     movieCell.movieTitleTextView.text = movie[@"title"];
     movieCell.movieSynopsisTextView.text = movie[@"synopsis"];
     
-    NSString *movieThumbnailURL = [movie valueForKeyPath:@"posters.thumbnail"];
+    NSString *movieThumbnailURL = [[movie valueForKeyPath:@"posters.thumbnail"] stringByReplacingOccurrencesOfString:@"_tmb" withString:@"_det"];
     [movieCell.movieImageView setImageWithURL:[NSURL URLWithString:movieThumbnailURL]];
     
     return movieCell;
