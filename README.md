@@ -25,8 +25,8 @@ Time spent: `<Number of hours spent>`
 - [X] Add a tab bar for Box Office and DVD.
 - [ ] Add a search bar: pretty simple implementation of searching against the existing table view data.
 
-### Walkthrough (sample-UPDATE THIS)
-![Video Walkthrough](http://i.imgur.com/9d4fXIm.gif)
+### Walkthrough
+![Video Walkthrough](http://imgur.com/LP1y2GJ)
 
 Credits
 ---------
