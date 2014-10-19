@@ -6,9 +6,9 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MovieDetailViewController">
             <connections>
-                <outlet property="audienceRatingTextView" destination="bkk-NT-vFJ" id="LDN-P0-DHa"/>
+                <outlet property="audienceRatingTextView" destination="68x-Sq-CyG" id="BOz-en-M31"/>
                 <outlet property="audienceScoreTextView" destination="Bda-GM-BP4" id="74n-oN-Zcb"/>
-                <outlet property="criticsRatingTextView" destination="68x-Sq-CyG" id="4FA-sc-Naa"/>
+                <outlet property="criticsRatingTextView" destination="bkk-NT-vFJ" id="Djh-yc-vNb"/>
                 <outlet property="criticsScoreTextView" destination="8iJ-ZC-X9J" id="Jlt-af-99W"/>
                 <outlet property="movieDetailImageView" destination="xsy-B0-wxR" id="haj-pR-uXp"/>
                 <outlet property="movieSynopsisTextView" destination="Y3l-ms-N7v" id="AV5-eN-p9v"/>
@@ -97,14 +97,14 @@
                     <rect key="frame" x="235" y="218" width="77" height="37"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    <fontDescription key="fontDescription" name="AppleSDGothicNeo-SemiBold" family="Apple SD Gothic Neo" pointSize="17"/>
+                    <fontDescription key="fontDescription" name="AppleSDGothicNeo-SemiBold" family="Apple SD Gothic Neo" pointSize="22"/>
                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                 </textView>
                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="PG-13" textAlignment="right" id="mM7-pC-jfE" userLabel="Rating">
                     <rect key="frame" x="235" y="271" width="77" height="67"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    <fontDescription key="fontDescription" name="AppleSDGothicNeo-SemiBold" family="Apple SD Gothic Neo" pointSize="17"/>
+                    <fontDescription key="fontDescription" name="AppleSDGothicNeo-SemiBold" family="Apple SD Gothic Neo" pointSize="22"/>
                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                 </textView>
                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" alpha="0.79999999999999982" contentMode="scaleToFill" bounces="NO" alwaysBounceVertical="YES" editable="NO" text="Synopsis text" id="Y3l-ms-N7v" userLabel="Synopsis Text">
@@ -117,7 +117,7 @@
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
-            <point key="canvasLocation" x="429" y="366"/>
+            <point key="canvasLocation" x="655" y="381"/>
         </view>
     </objects>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
