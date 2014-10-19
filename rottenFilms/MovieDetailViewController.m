@@ -19,6 +19,8 @@
 @property (weak, nonatomic) IBOutlet UITextView *criticsScoreTextView;
 @property (weak, nonatomic) IBOutlet UITextView *audienceRatingTextView;
 @property (weak, nonatomic) IBOutlet UITextView *audienceScoreTextView;
+@property (weak, nonatomic) IBOutlet UITextView *yearTextView;
+@property (weak, nonatomic) IBOutlet UITextView *ratingTextView;
 
 @end
 
@@ -43,6 +45,8 @@
     self.criticsScoreTextView.text = [NSString stringWithFormat:@"%@", [self.movie valueForKeyPath:@"ratings.critics_score"]];
     self.audienceRatingTextView.text= [self.movie valueForKeyPath:@"ratings.audience_rating"];
     self.audienceScoreTextView.text= [NSString stringWithFormat:@"%@", [self.movie valueForKeyPath:@"ratings.audience_score"]];
+    self.yearTextView.text = [NSString stringWithFormat:@"%@", [self.movie valueForKeyPath:@"year"]];
+    self.ratingTextView.text = [NSString stringWithFormat:@"%@", [self.movie valueForKeyPath:@"mpaa_rating"]];
     self.movieSynopsisTextView.text = self.movie[@"synopsis"];
 }
 
