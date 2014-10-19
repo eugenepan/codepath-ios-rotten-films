@@ -26,7 +26,7 @@ Time spent: `<Number of hours spent>`
 - [ ] Add a search bar: pretty simple implementation of searching against the existing table view data.
 
 ### Walkthrough
-![Video Walkthrough](http://imgur.com/LP1y2GJ)
+![Video Walkthrough](http://i.imgur.com/LP1y2GJ.gif)
 
 Credits
 ---------
