@@ -33,3 +33,4 @@ Credits
 * [Rotten Tomatoes API](http://developer.rottentomatoes.com/docs/read/JSON)
 * [AFNetworking](https://github.com/AFNetworking/AFNetworking)
 * [SVProgress HUD](https://github.com/TransitApp/SVProgressHUD)
+* [Icon Monster](http://iconmonstr.com/)
